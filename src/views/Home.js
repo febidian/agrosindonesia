@@ -42,6 +42,7 @@ function Home(props) {
     e.preventDefault();
     try {
       await axios.delete(`auth/me/${deleteid.id}`);
+      window.location = "https://agrosindonesia.vercel.app/";
     } catch (e) {
       console.log(e);
     }
