@@ -21,17 +21,17 @@ function index(props) {
             <Login />
           </Guest>
         </Route>
-        <Auth exact path="/daftar">
+        <Route path="/daftar">
           <Guest>
             <Register />
           </Guest>
-        </Auth>
-        <Route exact path="/tentang">
+        </Route>
+        <Route path="/tentang">
           <Auth>
             <TentangPage />
           </Auth>
         </Route>
-        <Route exact path="/profile">
+        <Route path="/profile">
           <Auth>
             <UpdateProfile />
           </Auth>
