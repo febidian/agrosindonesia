@@ -17,7 +17,7 @@ function Login(props) {
       let response = await axios.post("auth/login", values);
       localStorage.setItem("token", response.data.token);
 
-      window.location = "http://localhost:3000/";
+      window.location = "https://agrosindonesia.vercel.app/";
       setValues({
         email: "",
         password: "",

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Cerita from "../../components/Cerita";
 import Main from "../Main";
@@ -14,6 +15,7 @@ function Register(props) {
   });
   const [datarole, setDatarole] = useState("");
   const [error, setError] = useState("");
+  const history = useHistory();
   useEffect(() => {
     const Role = async () => {
       try {
@@ -31,7 +33,6 @@ function Register(props) {
     e.preventDefault();
     try {
       await axios.post("auth/register", values);
-      // console.log(response);
       setValues({
         nama: "",
         asal_kota: "",
@@ -39,6 +40,7 @@ function Register(props) {
         password: "",
         role_id: "",
       });
+      history.push("masuk");
     } catch (e) {
       setError(e.response.data.errors);
     }
