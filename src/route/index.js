@@ -16,7 +16,7 @@ function index(props) {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/masuk">
+        <Route path="/masuk">
           <Guest>
             <Login />
           </Guest>

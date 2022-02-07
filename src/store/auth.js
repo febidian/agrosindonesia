@@ -23,13 +23,5 @@ export const getUserAuth = selector({
       console.log(e.message);
     }
   },
-  effects_UNSTABLE: [persistAtom],
-});
-
-export const DataUser = atom({
-  key: "DataUser",
-  default: {
-    user: [],
-  },
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import Cerita from "../components/Cerita";
-import { DataUser } from "../store/auth";
+import { DataUser } from "../store/user";
 import Main from "./Main";
 
 function UpdateProfile(props) {
@@ -25,6 +25,7 @@ function UpdateProfile(props) {
         email: "",
         password: "",
       });
+      window.location = "https://agrosindonesia.vercel.app/";
     } catch (e) {
       setError(e.response.data.errors);
     }
@@ -77,17 +78,12 @@ function UpdateProfile(props) {
                   Email
                 </label>
                 <input
+                  disabled
                   defaultValue={values.email}
-                  onChange={(e) =>
-                    setValues({ ...values, email: e.target.value })
-                  }
                   type="text"
                   className="w-full mt-2 py-3 px-4 rounded-md transition duration-150 focus:ring-green-500 "
                   placeholder="Masukan Email"
                 />
-                {error.email && (
-                  <div className="mt-1 text-xs text-red-600">{error.email}</div>
-                )}
               </div>
               <div className="md:w-1/2 w-full px-4 py-2">
                 <label htmlFor="password" className="text-sm font-semibold ">

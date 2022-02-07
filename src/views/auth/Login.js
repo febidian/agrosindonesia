@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
 import Cerita from "../../components/Cerita";
+import { getAuth } from "../../store/auth";
 import Main from "../Main";
 
 function Login(props) {
@@ -8,6 +10,7 @@ function Login(props) {
     email: "",
     password: "",
   });
+  const setAuth = useSetRecoilState(getAuth);
 
   const [error, setError] = useState("");
 
@@ -16,10 +19,15 @@ function Login(props) {
     try {
       let response = await axios.post("auth/login", values);
       localStorage.setItem("token", response.data.token);
-
-      window.location = "https://agrosindonesia.vercel.app/";
+      console.log(response.data);
+      // console.log(response.data.status);
+      if (response.data.status === 200) {
+        setAuth({
+          check: true,
+        });
+        window.location = "https://agrosindonesia.vercel.app/";
+      }
       setValues({
-        email: "",
         password: "",
       });
       setError("");

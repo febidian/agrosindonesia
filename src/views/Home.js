@@ -5,13 +5,15 @@ import Main from "./Main";
 import Cerita from "../components/Cerita";
 import Layanan from "../components/Layanan";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { DataUser, getAuth, getUserAuth } from "../store/auth";
+import { getAuth, getUserAuth } from "../store/auth";
+import { DataUser } from "../store/user";
 import axios from "axios";
 import LoadMitra from "../components/LoadMitra";
 import Delete from "../assets/icons/Delete";
 
 function Home(props) {
   const auth = useRecoilValueLoadable(getUserAuth);
+  console.log(auth);
   const setUser = useSetRecoilState(DataUser);
   const [mitra, setMitra] = useState("");
   const [loadMitra, setLoadMitra] = useState(false);
