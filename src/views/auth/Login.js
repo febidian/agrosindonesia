@@ -19,8 +19,6 @@ function Login(props) {
     try {
       let response = await axios.post("auth/login", values);
       localStorage.setItem("token", response.data.token);
-      console.log(response.data);
-      // console.log(response.data.status);
       if (response.data.status === 200) {
         setAuth({
           check: true,

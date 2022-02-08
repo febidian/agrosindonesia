@@ -23,7 +23,7 @@ function Register(props) {
         setDatarole(response.data.role);
         setError("");
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     Role();
@@ -125,7 +125,7 @@ function Register(props) {
                   onChange={(e) =>
                     setValues({ ...values, password: e.target.value })
                   }
-                  type="text"
+                  type="password"
                   className="w-full mt-2 py-3 px-4 rounded-md transition duration-150 focus:ring-green-500 "
                   placeholder="Masukan Password"
                 />
@@ -177,7 +177,7 @@ function Register(props) {
             <div className="mt-6">
               <span className=" text-sm ">
                 Sudah memiliki Akun?{" "}
-                <Link className="text-green-600 font-medium" to="ds">
+                <Link className="text-green-600 font-medium" to="masuk">
                   Masuk sekarang
                 </Link>
               </span>

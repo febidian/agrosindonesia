@@ -20,7 +20,7 @@ export const getUserAuth = selector({
       const response = await axios.get("auth/me");
       return response.data;
     } catch (e) {
-      console.log(e.message);
+      // console.log(e.message);
     }
   },
   // effects_UNSTABLE: [persistAtom],

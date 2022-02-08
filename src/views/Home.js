@@ -13,7 +13,6 @@ import Delete from "../assets/icons/Delete";
 
 function Home(props) {
   const auth = useRecoilValueLoadable(getUserAuth);
-  console.log(auth);
   const setUser = useSetRecoilState(DataUser);
   const [mitra, setMitra] = useState("");
   const [loadMitra, setLoadMitra] = useState(false);
@@ -21,17 +20,19 @@ function Home(props) {
   const history = useHistory();
 
   useEffect(() => {
-    const getMitra = async () => {
-      try {
-        let response = await axios.get("auth/mitra");
-        setMitra(response.data);
-        setLoadMitra(true);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getMitra();
-  }, []);
+    if (auth.contents && auth.state === "hasValue") {
+      const getMitra = async () => {
+        try {
+          let response = await axios.get("auth/mitra");
+          setMitra(response.data);
+          setLoadMitra(true);
+        } catch (error) {
+          // console.log(error);
+        }
+      };
+      getMitra();
+    }
+  }, [auth.contents, auth.state]);
 
   useEffect(() => {
     setUser(auth.contents);
@@ -46,7 +47,7 @@ function Home(props) {
       await axios.delete(`auth/me/${deleteid.id}`);
       window.location = "https://agrosindonesia.vercel.app/";
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 
@@ -58,7 +59,7 @@ function Home(props) {
       localStorage.removeItem("token");
       history.push("/masuk");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   return (
@@ -166,7 +167,7 @@ function Home(props) {
                     <div className="text-lg font-bold capitalize">
                       {get.nama}
                     </div>
-                    <button className=" bg-[#63BA73]  py-1 px-2 rounded-lg mt-5 text-sm font-bold text-white pointer-events-none cursor-default">
+                    <button className="capitalize bg-[#63BA73]  py-1 px-2 rounded-lg mt-5 text-sm font-bold text-white pointer-events-none cursor-default">
                       {get.asal_kota}
                     </button>
                   </div>
